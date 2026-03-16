@@ -1,4 +1,4 @@
-from data_collection import StockData, StockAnalyzed
+from data_collection import StockAnalyzed
 
 def get_user() -> tuple[str, str, str, int]:
     print("\nВведите параметры для скачивания данных акций:")
