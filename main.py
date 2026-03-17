@@ -1,4 +1,5 @@
 from data_collection import StockAnalyzed
+from os import remove
 
 def get_user() -> tuple[str, str, str, int]:
     print("\nВведите параметры для скачивания данных акций:")
@@ -33,7 +34,7 @@ def main():
 
     print(rsi_data[['Date', 'Close', f'SMA_{days}', f'RSI_{days}']].tail().to_string(index=False))
     print(f'Тренд RSI: {trend}')
-
+    remove(analyzer.default_file_name)
 
 
 
