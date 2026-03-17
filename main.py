@@ -10,13 +10,18 @@ def get_user() -> tuple[str, str, str, int]:
 
     return ticker, start_date, end_date, days
 
+
+ticker, start_date, end_date, days = get_user()
+analyzer = StockAnalyzed(ticker, start_date, end_date)
+
+
 def main():
 
-    ticker, start_date, end_date, days = get_user()
+    global ticker, start_date, end_date, days
 
     print('Загружаю данные...')
 
-    analyzer = StockAnalyzed(ticker, start_date, end_date)
+    global analyzer
 
     filename = analyzer.data_col()
 
@@ -34,9 +39,10 @@ def main():
 
     print(rsi_data[['Date', 'Close', f'SMA_{days}', f'RSI_{days}']].tail().to_string(index=False))
     print(f'Тренд RSI: {trend}')
-    remove(analyzer.default_file_name)
 
 
 
 if __name__ == '__main__':
     main()
+    remove(analyzer.default_file_name)
+
